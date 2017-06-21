@@ -14,6 +14,7 @@
 
         this._linux = false;
         this._blockContextMenu = false;
+        this._contextMenuEvent = null;
     };
 
     ZOMBULL.Handler.prototype.init = function () {
@@ -62,24 +63,49 @@
 
     ZOMBULL.Handler.prototype.onContextMenu = function (event) {
         if (this._linux) {
-            this._blockContextMenu = false;
-            if (this._mouse.blockContextMenu) {
-                this._blockContextMenu = true;
-            }
-            else if (this._rocker.blockContextMenu) {
-                this._blockContextMenu = (!this._options.rockerContextMenu || this._rocker.isLink() || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey);
-            }
+            this._blockContextMenu = this._blockContextMenu || this._mouse.blockContextMenu || this._rocker.blockContextMenu;
         }
-
         if (this._blockContextMenu) {
             ZOMBULL.cancelEvent(event);
 
             this._blockContextMenu = false;
+            this._contextMenuEvent = event;
+            this._eventManager.addEventListener('mouseup', this.onMouseUp, true);
         }
         else {
             // Cancel any ongoing gesture if the context menu is being shown.
             this._mouse.end();
             this._rocker.end();
         }
+    };
+
+    ZOMBULL.Handler.prototype.onMouseUp = function (event) {
+        var contextMenuEvent = new MouseEvent('contextmenu', {
+            'bubbles': this._contextMenuEvent.bubbles,
+            'cancelable': this._contextMenuEvent.cancelable,
+            'scoped': this._contextMenuEvent.scoped,
+            'composed': this._contextMenuEvent.composed,
+            'sourceCapabilities': this._contextMenuEvent.sourceCapabilities,
+            'view': event.view,
+            'detail': event.detail,
+            'screenX': event.screenX,
+            'screenY': event.screenY,
+            'clientX': event.clientX,
+            'clientY': event.clientY,
+            'ctrlKey': event.ctrlKey,
+            'shiftKey': event.shiftKey,
+            'altKey': event.altKey,
+            'metaKey': event.metaKey,
+            'button': event.button,
+            'buttons': event.buttons,
+            'relatedTarget': event.relatedTarget,
+            'region': event.region,
+        });
+
+        event.target.dispatchEvent(contextMenuEvent);
+
+        this._contextMenuEvent = null;
+
+        this._eventManager.removeEventListeners(true);
     };
 }(window.ZOMBULL = window.ZOMBULL || {}));
