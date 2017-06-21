@@ -1,0 +1,175 @@
+body {
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.v5-bloques {
+    font-family: 'V5 Bloques';
+    font-weight: normal;
+    font-size: 96px;
+    line-height: 96px;
+    margin: 16px 0;
+}
+
+.entry {
+    height: 48px;
+    margin-top: 16px;
+}
+
+.gesture {
+    margin: 0 16px;
+}
+
+.add {
+    width: 48px;
+}
+
+.action, .delete, .gesture, .add, .gesture-details, .edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete, .gesture, .add, .edit {
+    height: 48px;
+    width: 48px;
+}
+
+
+.grey, .action {
+    background: #f5f5f5;
+}
+.blue, .gesture {
+    background: #00EFDE;
+}
+.green, .add {
+    background: #BDFF18;
+}
+.red, .delete:hover {
+    background: #FF3900;
+}
+.purple, md-content > div:focus:not(.action-container):not(.radio-label), md-content > .action-container:focus .action {
+    background: #940084;
+}
+
+.yellow, .edit:hover {
+    background: #FFBD00;
+}
+
+.delete, .add, .edit, .action, .radio-label, md-switch .md-container {
+    cursor: pointer;
+}
+
+#main {
+    max-width: 864px;
+    padding: 0;
+    margin: 0 auto;
+    width: auto;
+}
+
+#port-container {
+    width: 66%;
+    max-width: 950px;
+}
+#port-container textarea.md-input {
+    min-height: 100%;
+}
+
+#search-toolbar {
+    background: transparent;
+    color: rgba(0, 0, 0, .87);
+}
+
+md-input-container > label {
+    font-size: 18px;
+}
+
+md-radio-button {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.md-dialog-container .material-icons {
+    font-size: 48px;
+}
+
+.fullscreen-dialog {
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+}
+
+.medium-dialog {
+    height: 486px;
+    width: 864px;
+    max-height:100%;
+    max-width: 100%;
+}
+
+.medium-autocomplete {
+    width: 432px;
+}
+
+.help-dialog {
+    height: 90%;
+    width: 864px;
+    max-height:100%;
+    max-width: 100%;
+
+    font-size: 14px;
+}
+
+.help-content {
+    max-width: 864px;
+    margin: 16px;
+}
+
+.help-content h2 {
+    margin-top: 1em;
+    margin-bottom: 0.25em;
+}
+
+.help-content p {
+    margin-top: 0.25em;
+    margin-bottom: 1.6em;
+}
+
+.help-content .footnote {
+    font-size: 12px;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+.help-content sup {
+    font-size: 10px;
+}
+
+.help-gesture {
+    align-items: center;
+}
+
+.help-gesture .material-icons {
+    font-size: 24px;
+}
+
+.help-gesture > div {
+    height: 24px;
+    width: 24px;
+}
+
+.help-gesture > .action {
+    height: 24px;
+    width: 96px;
+    margin-right: 14px;
+}

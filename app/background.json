@@ -1,0 +1,9 @@
+{
+    "js": [
+        "app/js/enums.js",
+        "app/js/utilities.js",
+        "app/js/defaultoptions.js",
+        "app/js/chromeactions.js",
+        "app/js/background.js"
+    ]
+}

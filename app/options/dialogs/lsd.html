@@ -1,0 +1,50 @@
+<md-dialog class="medium-dialog" layout="column" layout-align="center center">
+   <h2 ng-if="ctrl.isSave"  flex="33">{{"save" | i18n}}</h2>
+   <h2 ng-if="ctrl.isLoad" flex="33">{{"load" | i18n}}</h2>
+   <h2 ng-if="ctrl.isDelete" flex="33">{{"delete" | i18n}}</h2>
+
+
+   <div flex class="medium-autocomplete">
+        <md-autocomplete
+            placeholder="{{'lsdPlaceholder' | i18n}}"
+            md-selected-item="selectedItem"
+            md-selected-item-change="ctrl.selectedItemChange(item)"
+            md-search-text="searchText"
+            md-items="item in ctrl.search(searchText)"
+            md-item-text="item.name"
+            md-autoselect="true"
+            md-autofocus="true"
+            md-min-length="0"
+            md-no-cache="true"
+            md-delay="0">
+
+            <span md-highlight-text="searchText" md-highlight-flags="^i" ng-if="ready">{{item.name}}</span>
+
+            <md-not-found>
+                <!-- The not found error message for save is different than load/delete. -->
+                <span ng-if="ctrl.isSave && searchText" ng-bind-html="'invalidName' | i18n:searchText"></span>
+                <span ng-if="ctrl.isLoad || ctrl.isDelete" ng-bind-html="'noSavedMatching' | i18n:searchText"></span>
+            </md-not-found>
+        </md-autocomplete>
+    </div>
+
+    <!-- THe confirmation dialog is also operation specific. -->
+    <div flex ng-if="ctrl.isSave && ctrl.name" ng-bind-html="'saveAs' | i18n:ctrl.name"></strong>.</div>
+    <div flex ng-if="ctrl.isSave && ctrl.invalid" ng-bind-html="'invalidOverwrite' | i18n"></div>
+
+    <div flex ng-if="ctrl.isLoad && ctrl.name && !ctrl.unsavedOptions" ng-bind-html="'loadFrom' | i18n:ctrl.name"></div>
+    <div flex ng-if="ctrl.isLoad && ctrl.name && ctrl.unsavedOptions" ng-bind-html="'loadFromUnsaved' | i18n:ctrl.name"></div>
+
+    <div flex ng-if="ctrl.isDelete && ctrl.name" ng-bind-html="'deleteFrom' | i18n:ctrl.name"></div>
+
+
+
+    <div layout="row">
+        <md-button ng-click="ctrl.cancel()">{{"cancel" | i18n}}</md-button>
+
+        <!-- Last but not least, the confirmation button varies between load/save/delete. -->
+        <md-button id="lsd-confirm" ng-if="ctrl.isSave && ctrl.name" ng-click="ctrl.confirm(ctrl.name)">{{"save" | i18n}}</md-button>
+        <md-button id="lsd-confirm" ng-if="ctrl.isLoad && ctrl.name" ng-click="ctrl.confirm(ctrl.name)">{{"load" | i18n}}</md-button>
+        <md-button id="lsd-confirm" ng-if="ctrl.isDelete && ctrl.name" ng-click="ctrl.confirm(ctrl.name)">{{"delete" | i18n}}</md-button>
+    </div>
+</md-dialog>

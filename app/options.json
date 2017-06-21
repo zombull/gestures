@@ -1,0 +1,42 @@
+{
+    "css": [
+        "app/options/material-icons/material-icons.css",
+        "app/options/bower_components/angular-material/angular-material.css",
+
+        "app/options/v5_bloques/v5_bloques.css",
+        "app/options/style.css"
+    ],
+    "js": [
+        "app/options/bower_components/angular/angular.js",
+        "app/options/bower_components/angular-animate/angular-animate.js",
+        "app/options/bower_components/angular-aria/angular-aria.js",
+        "app/options/bower_components/angular-material/angular-material.js",
+        "app/options/bower_components/angular-sanitize/angular-sanitize.js",
+        "app/options/bower_components/lodash/lodash.js",
+
+        "app/js/enums.js",
+        "app/js/utilities.js",
+        "app/js/defaultoptions.js",
+        "app/js/eventmanager.js",
+        "app/js/gesture.js",
+        "app/js/gestures.js",
+        "app/js/mousegesture.js",
+        "app/js/rockergesture.js",
+        "app/js/handler.js",
+
+        "app/options/app.js",
+        "app/options/capture.js",
+        "app/options/services/database.js",
+        "app/options/services/details.js",
+        "app/options/services/edit.js",
+        "app/options/services/error.js",
+        "app/options/services/export.js",
+        "app/options/services/help.js",
+        "app/options/services/import.js",
+        "app/options/services/lsd.js",
+        "app/options/services/safeapply.js",
+        "app/options/filters/i18n.js",
+        "app/options/controllers/ui.js",
+        "app/options/controllers/search.js"
+    ]
+}

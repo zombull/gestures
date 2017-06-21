@@ -1,0 +1,18 @@
+<md-dialog class="fullscreen-dialog" layout="column" layout-align="center center">
+   <div flex="10"></div>
+   <h2 flex="40">{{action | i18n}}</h2>
+
+   <div flex="20" layout="column">
+       <h2 ng-if="existingGesture" ng-bind-html="'gestureInUse' | i18n:existingGesture:true"></h2>
+       <br>
+       <h2 class="gesture-details" ng-bind-html="gestureDetails"></h2>
+   </div>
+   <div layout="row">
+       <md-button ng-click="cancel()">{{"cancel" | i18n}}</md-button>
+       <md-button ng-if="gestureDetails && !existingGesture" ng-click="save()">{{"save" | i18n}}</md-button>
+   </div>
+   <div flex="10"></div>
+   <div flex ng-if="!gestureDetails" ng-bind-html="'performGesture' | i18n"></div>
+   <div flex ng-if="gestureDetails" ng-bind-html="'performNewGesture' | i18n"></div>
+
+</md-dialog>
