@@ -1,0 +1,31 @@
+Private
+    • No ads
+    • No tracking
+
+Lightweight
+    • No third party library dependencies (excepting options page)
+    • 13kb content script (injected on each tab)
+    • 15kb background script (runs in its own Chrome process)
+
+Versatile
+    • Configure Mouse and/or Rocker gestures for any action
+    • Overload gestures for target-based actions (Link, Image or Selection), no dragging necessary
+    • Use CTRL, ALT and/or META to overload and extend gestures
+
+Featureful
+    • Newfangled actions like 'Mute All Other Tabs' and 'Close All Incognito Windows'
+    • Reading List allows you to quicky add/remove sites to/from a Reading List without polluting your other bookmarks
+    • Specify custom URLs for new tabs and new Incognito tabs
+
+Configurable
+    • Quickly search for the action/option you want to configure
+    • Save any number of your own custom configs and switch between them as needed
+    • Settings are automatically synchronized when you're signed into Chrome
+    • Export/Import configs to transfer them to other systems without signing into Chrome
+
+
+Unsupported (And Never Will Be)
+    • Gesture tracing and/or realtime UI feedback of gestures
+    • Drag gestures (left-click drag on a link/image)
+
+    Please look elsewhere if any feature(s) listed above is a must have for you.

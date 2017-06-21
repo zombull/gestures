@@ -1,0 +1,10 @@
+<md-dialog class="fullscreen-dialog" layout="column" layout-align="center center">
+   <div flex="10" ng-bind-html="'exportPrompt' | i18n"></div>
+
+   <md-content id="port-container" flex="70"><pre id="port-content">{{options | json}}</pre></md-content>
+   <div layout="row">
+       <md-button ng-click="cancel()">{{"cancel" | i18n}}</md-button>
+       <md-button id="export-confirm" ng-click="copy()">{{"copy" | i18n}}</md-button>
+   </div>
+   <div flex="10"></div>
+</md-dialog>

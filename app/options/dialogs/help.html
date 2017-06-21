@@ -1,0 +1,101 @@
+<md-dialog class="help-dialog">
+    <md-content layout-padding md-scroll-y>
+        <div class="help-content">
+            <md-content>
+                <h2 class="md-headline" style="margin-top: 0;">Getting Started</h2>
+                <p>Gestures is a Chrome extension for defining and performing mouse <i>gestures</i>.  Analogous to Chrome's built-in keyboard shortcuts, gestures are specific sequences of mouse events that are assigned to <i>actions</i>; when you perform a known gesture, Gestures executes its corresponding action.</p>
+
+                <p>Example: To create a new tab using Chrome's keyboard shortcut you would press CTRL+T.  To create a new tab using Gestures' default config you would press and hold the right mouse button, move the mouse <i>down</i> a short distance and release the right mouse button.  The action in this example is <i>New Tab</i> and the gesture is <i>MOUSE DOWN</i>.</p>
+
+
+                <h2 class="md-headline">Gestures</h2>
+                <p>Gestures supports two types of gestures, Mouse and Rocker, as well as Key Modifiers.</p>
+
+                <p><strong><i>Mouse</i></strong> gestures are performed by pressing and holding a single mouse button (<i>Right</i> button in default config), moving the mouse in a series of cardinal directions to create (invisible) lines, and releasing the mouse button.  The resulting sequence of lines is interpreted as the gesture.</p>
+
+                <p>Example: The default config assigns the simple gesture <i>MOUSE DOWN</i> to <i>New Tab</i>, and the more complex <i>MOUSE DOWN+RIGHT+LEFT</i> to <i>Close All Windows</i>.</p>
+
+                <p><strong><i>Rocker</i></strong> gestures are performed by pressing and holding either the Left or Right mouse button and clicking the button that is not pressed (Right or Left).  There are exactly two base Rocker gestures, RIGHT+LEFT and LEFT+RIGHT.  Rocker gestures using mouse buttons other than Left and Right are not supported due to inconsistent behavior.</p>
+
+                <p>Example: The default config assigns the gesture <i>ROCKER LEFT+RIGHT</i> to the action <i>Add To Reading List</i>.</p>
+
+                <p><strong><i>Key Modifiers</i></strong> are activated by holding one or more modifier keys, CTRL, ALT<sup>1</sup>, SHIFT and/or META<sup>2</sup>, when a gesture is triggered, i.e. on the button release for a Mouse gesture and on the secondary button click for a Rocker gesture.  Key modifiers allow basic Mouse and Rocker gestures to be extended to create new gestures, thereby increasing the number of usable gestures without having to perform additional mouse movements.</p>
+
+                <p>Example: The default config extends <i>MOUSE DOWN</i> by adding the <i>CTRL</i> modifier, assigning the gesture <i>MOUSE CTRL DOWN</i> to the action <i>Open Downloads</i>.</p>
+
+                <p class="footnote">1: ALT may be referred to as OPTION on some keyboards, e.g. Apple.</p>
+                <p class="footnote">2: META is keyboard specific, e.g. Windows key or Apple Command key.  META will rarely/never work on Windows systems due to the way the Windows key is handled by the operating system.</p>
+
+
+                <h2 class="md-headline">Targets</h2>
+                <p>Gestures categorizes all actions as one of four types of <i>targets</i>: Generic, Link, Image and Selection.  Link, Image and Selection actions will have Link/Image/Selection somewhere in the name of the action, e.g. "Download Image"; everything else is a Generic action.  When a potential gesture is triggered each target type is processed to look for a matching target as well as a matching gesture.  Targets are processed in priority order of Selection, Link, Image and finally Generic.</p>
+
+                <p>A <strong><i>Selection</i></strong> target is matched whenever there is a selected element (text) on the page.  Unlike Link and Image, Selection does not require the gesture to start on the selected element.</p>
+                <p>A <strong><i>Link</i></strong> target is matched when the gesture starts<sup>1</sup> on a link<sup>2</sup>.</p>
+                <p>An <strong><i>Image</i></strong> target is matched when the gesture starts<sup>1</sup> on an image<sup>2</sup>.</p>
+                <p>A <strong><i>Generic</i></strong> target is matched by all gestures, including gestures that also match Selection, Link or Image.</p>
+
+                <p>Example: The default config assigns the gesture <i>MOUSE DOWN</i> to three different targets: Link, Image and Generic.  If the gesture started on a link then the action <i>New Background Tab From Link</i> is executed; if the gesture started on an image then the action <i>New Background Tab From Image</i> is executed; and finally, if the gesture did not start on a link or target then the action <i>New Tab</i> is executed.  Note that because <i>MOUSE DOWN</i> is not assigned to any Selection action the end result of the gesture is the same regardless of whether or not any element(s) on the page is selected.</p>
+
+                 <p>Example: The default config assigns the gesture <i>MOUSE CTRL DOWN</i> to two different targets: Image and Generic.  If the gesture started on a image then the action <i>Download Image</i> is executed, otherwise the action <i>Open Downloads</i> is executed.</p>
+
+                <p class="footnote">1: Rocker gestures 'start' when the second mouse button is clicked.</p>
+                <p class="footnote">2: Many images on the web are actually links represented by an image instead of text.  These are treated as links by Gestures.</p>
+
+
+                <h2 class="md-headline">Options</h2>
+                <p>Gestures automatically saves your options when any option is changed.  Your options are also automatically synchronized across machines if you are signed into Chrome.</p>
+
+                <p>A snapshot of the options is called a <i>config</i>.  At any given time only one config is active; the active config is referred to as the <i>current</i> config.  The options page always reflects the current config.  At the top of the page you will see 'Current config is <strong>Default</strong> config.', 'Current config is saved as ...' or 'Current config has not been saved'.  This does indicate whether or not your options haven been saved/synchronized, but rather indicates whether or not the current config has been saved in the storage database with an assigned name so that the config can be retrieved later.</p>
+
+                <p>The <strong><i>Save</i></strong>, <strong><i>Load</i></strong> and <strong><i>Delete</i></strong> buttons allow you to save the current config into your storage database, load a config from your storage database, or delete a config from your storage database.  As with all options, your saved configs are synchronized across machines when you are signed into Chrome.  Above the Save/Load/Delete button you will see a brief blurb stating how many configs have been saved, and approximately how many additional configs can be saved in synchronized storage.  Configs vary in size based on the number of gestures defined, which is why the number of additional configs that can be saved is an estimate.</p>
+
+                <p>The <strong><i>Export</i></strong> and <strong><i>Import</i></strong> buttons allow you to export the current config as JSON by copying it to your clipboard, and import a config by pasting its JSON representation into the import dialog.  JSON is a text-based data format, which means that you can save an exported config in a text file, send it via email, and if you so desire, manually edit the config.</p>
+
+                <p>Options are organized by their types: switches, new tab URLs, and actions.  The search bar in the upper right allows you to quickly search for an option by name.  Clicking on the label (name) of any option will bring up a dialog that provides more information as to what the option controls or how an action is executed.</p>
+
+                <p>Switches are boolean options that control how Gestures behaves.  The <i>New Tab Url</i> and <i>New Incognito Tab Url</i> options allow you to specify URLs that are used when opening a new tab via a gesture that does not have a predefined URL.  A tab will have a predefined URL when it was opened to show a target link or image, or to navigate to a shortcut such as the Extensions page.  Use chrome://newtab to load Chrome's New Tab page.  Note that Chrome does not allow extensions to run on its Incognito New Tab page, even if the extension is given permission in the Extensions page.  This means that using chrome://newtab as the URL for new Incognito tabs will prevent Gestures from working on new Incognito tabs, which is why the default config uses http://www.google.com as the New Incognito Tab Url.</p>
+
+                <p>Each entry/line in the actions options represents a gesture that is assigned to an action.  The action label can be found on the left, followed by the gesture and buttons to edit, remove and add gestures for the action.  Blank/missing action labels mean that multiple gestures are assigned to the above action.   A blank gesture/edit/remove entry means there are no gestures assigned to the action.  See below for a quick tutorial on how to read an action entry.<p>
+
+                <p><div layout="row" class="help-gesture"><div class="action">Stop</div>&nbsp;This entry defines gestures for the Stop action.</div></p>
+
+                <p><div layout="row" class="help-gesture">
+                    ROCKER<i class="material-icons">keyboard_arrow_left</i><i class="material-icons">keyboard_arrow_right</i>
+                    &nbsp;&nbsp;&nbsp;&nbsp;A Rocker gesture activated by holding the Left button and clicking the Right button.
+                </div></p>
+
+                <p><div layout="row" class="help-gesture">
+                    <i class="material-icons">keyboard_arrow_up</i>
+                    <i class="material-icons">keyboard_arrow_down</i>
+                    <i class="material-icons">keyboard_arrow_left</i>
+                    <i class="material-icons">keyboard_arrow_right</i>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Mouse gesture activated by moving the mouse UP, DOWN, LEFT and RIGHT while holding the mouse button.
+                </div></p>
+
+                <p><div layout="row" class="help-gesture">
+                    CTRL&nbsp;ALT
+                    <i class="material-icons">keyboard_arrow_down</i>
+                    &nbsp;&nbsp;&nbsp;&nbsp;A Mouse gesture activated by moving the mouse DOWN while holding the mouse button, CTRL and ALT.
+                </div></p>
+
+                <p><div layout="row" class="help-gesture"><div class="edit"><i class="material-icons">edit</i></div>&nbsp;Edit an existing gesture for an action.</div></p>
+                <p><div layout="row" class="help-gesture"><div class="delete"><i class="material-icons">close</i></div>&nbsp;Remove an existing gesture from an action.</div></p>
+                <p><div layout="row" class="help-gesture"><div class="add"><i class="material-icons">add</i></div>&nbsp;Add a gesture for an action.</div></p>
+
+                <h2 class="md-headline">Tips</h2>
+                <p>Hitting the forward-slash button anywhere on the options page will activate the search bar.</p>
+
+                <p>Click on the name of an option to learn more about that option.</p>
+
+                <p>Saving configs allows you to experiment with different gesture mappings without having to rebuild your preferred config from scratch.</p>
+
+                <p>All dialogs autofocus the confirmation button.  You can simply hit ENTER to copy Exported settings or confirm an Import, Save, Load or Delete.</p>
+
+                <p>Rocker gestures 'start' when you click the second button.  You can quickly open multiple links/images in background tabs by holding the Right mouse button and Left clicking on each link/tab you want to open.</p>
+
+                <p>Chrome does not allow extensions to run on certain sites; Gestures will not be active on these sites.  Restricted sites include but are not limited to: chrome://* (except non-incognito chrome://newtab), chrome-extension://* and https://chrome.google.com/*.</p>
+            </md-content>
+        </div>
+    </md-content>
+</md-dialog>

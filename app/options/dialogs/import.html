@@ -1,0 +1,13 @@
+<md-dialog class="fullscreen-dialog" layout="column" layout-align="center center">
+   <div flex="10"></div>
+
+   <md-input-container id="port-container" flex="70">
+    <label ng-bind-html="'importPrompt' | i18n"></label>
+    <textarea id="port-content" ng-model="unverified" ng-change="verify()" columns="1"></textarea>
+  </md-input-container>
+   <div layout="row">
+       <md-button ng-click="cancel()">{{"cancel" | i18n}}</md-button>
+       <md-button id="import-confirm" ng-if="!error && options" ng-click="import()">{{"import" | i18n}}</md-button>
+   </div>
+   <div ng-if="error" flex="10">{{error}}</div>
+</md-dialog>

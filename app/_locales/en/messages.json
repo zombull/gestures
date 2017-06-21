@@ -1,0 +1,373 @@
+{
+    "name": { "message": "Gestures" },
+    "description": { "message": "Mouse gestures.  Accessible for casual users, versatile for power users." },
+
+    "default": { "message": "Default" },
+    "cancel": { "message": "Cancel" },
+    "copy": { "message": "Copy" },
+    "enter": { "message": "ENTER" },
+
+    "help": { "message": "Help" },
+    "import": { "message": "Import" },
+    "export": { "message": "Export" },
+    "delete": { "message": "Delete" },
+    "load": { "message": "Load" },
+    "save": { "message": "Save" },
+
+    "left": { "message": "Left" },
+    "middle": { "message": "Middle" },
+    "right": { "message": "Right" },
+    "rocker": { "message": "ROCKER" },
+
+
+    "none": { "message": "None" },
+    "alt": { "message": "ALT" },
+    "ctrl": { "message": "CTRL" },
+    "meta": { "message": "META" },
+    "shift": { "message": "SHIFT" },
+
+    "button": { "message": "Mouse Gestures Button" },
+    "disableKey": { "message": "Disable Gestures Key"},
+    "newTabRight": { "message": "New Tab Right" },
+    "newTabFromUrlRight": { "message": "New Tab From Url Right" },
+    "doNotClosePinnedTabs": { "message": "Do Not Close Pinned Tabs" },
+    "focusChromeOnCloseWindow": { "message": "Focus Chrome On Close Window" },
+    "rockerContextMenu": { "message": "Rocker Context Menu (Linux Only)" },
+    "reloadAllTabsOnUpdate": { "message": "Reload All Tabs On Update" },
+    "allowIncognitoAddToReadingList": { "message": "Allow Incognito Add To Reading List" },
+    "showAdvancedOptions": { "message": "Show Advanced Options"},
+    "newTabUrl": { "message": "New Tab Url" },
+    "newIncognitoTabUrl": { "message": "New Incognito Tab Url" },
+    "stop": { "message": "Stop" },
+    "back": { "message": "Back" },
+    "forward": { "message": "Forward" },
+    "print": { "message": "Print" },
+    "newWindow": { "message": "New Window" },
+    "newIncognitoWindow": { "message": "New Incognito Window" },
+    "newWindowFromLink": { "message": "New Window From Link" },
+    "newIncognitoWindowFromLink": { "message": "New Incognito Window From Link" },
+    "newWindowFromImage": { "message": "New Window From Image" },
+    "newIncognitoWindowFromImage": { "message": "New Incognito Window From Image" },
+    "closeWindow": { "message": "Close Window" },
+    "closeOtherWindows":  { "message": "Close Other Windows" },
+    "closeAllWindows": { "message": "Close All Windows" },
+    "closeAllIncognitoWindows": { "message": "Close All Incognito Windows"},
+    "mergeAllWindows": { "message": "Merge All Windows" },
+    "gotoNewTabPage": { "message": "Goto New Tab Page" },
+    "reloadAllTabs": { "message": "Reload All Tabs" },
+    "reloadAllTabsBypassCache": { "message": "Reload All Tabs Bypass Cache" },
+    "reloadTab": { "message": "Reload Tab" },
+    "reloadTabBypassCache": { "message": "Reload Tab Bypass Cache" },
+    "newTab": { "message": "New Tab" },
+    "newBackgroundTab": { "message": "New Background Tab" },
+    "newTabFromLink": { "message": "New Tab From Link" },
+    "newBackgroundTabFromLink": { "message": "New Background Tab From Link" },
+    "newTabFromImage": { "message": "New Tab From Image" },
+    "newBackgroundTabFromImage": { "message": "New Background Tab From Image" },
+    "downloadImage": { "message": "Download Image" },
+    "duplicateTab": { "message": "Duplicate Tab" },
+    "splitTabs": { "message": "Split Tabs" },
+    "closeTab": { "message": "Close Tab" },
+    "closeOtherTabsInWindow": { "message": "Close Other Tabs In Window" },
+    "closeAllOtherTabs": { "message": "Close All Other Tabs" },
+    "closeTabsLeft": { "message": "Close Tabs Left" },
+    "closeTabsRight": { "message": "Close Tabs Right" },
+    "previousTab": { "message": "Previous Tab" },
+    "nextTab": { "message": "Next Tab" },
+    "moveTabLeft": { "message": "Move Tab Left" },
+    "moveTabRight": { "message": "Move Tab Right" },
+    "toggleTabPinned": { "message": "Toggle Tab Pinned" },
+    "pinTab": { "message": "Pin Tab" },
+    "unpinTab": { "message": "Unpin Tab" },
+    "stashTab": { "message": "Stash Tab" },
+    "toggleTabMuted": { "message": "Toggle Tab Muted" },
+    "muteTab": { "message": "Mute Tab" },
+    "unmuteTab": { "message": "Unmute Tab" },
+    "muteAllTabs": { "message": "Mute All Tabs" },
+    "unmuteAllTabs": { "message": "Unmute All Tabs" },
+    "muteAllOtherTabs":{ "message": "Mute All Other Tabs" },
+    "searchSelectionInNewTab": { "message": "Search Selection In New Tab" },
+    "searchSelectionInNewBackgroundTab": { "message": "Search Selection In New Background Tab" },
+    "openHistory": { "message": "Open History" },
+    "openBookmarks": { "message": "Open Bookmarks" },
+    "openDownloads": { "message": "Open Downloads" },
+    "openExtensions": { "message": "Open Extensions" },
+    "openSettings": { "message": "Open Settings" },
+    "openClearBrowsingData": { "message": "Open Clear Browsing Data" },
+    "openOptions": { "message": "Open Options" },
+    "viewSource": { "message": "View Source" },
+    "addToReadingList": { "message": "Add To Reading List" },
+    "removeFromReadingList": { "message": "Remove From Reading List" },
+    "openReadingList": { "message": "Open Reading List" },
+    "enableMouseGestures": { "message": "Enable Mouse Gestures" },
+    "disableMouseGestures": { "message": "Disable Mouse Gestures" },
+
+    "buttonHelp": {
+        "message": "Choose which mouse button will be used for mouse gestures.  **WARNING** Only select 'Left' or 'Middle' if you are aware of the ramifications.  When using the Left or Middle button, Gestures prevents the default event handler when a potential gesture is started to prevent unwanted text selection (Left) or scrolling (Middle).  Note that 'click' events for links, buttons, inputs and other such elements will generally still work when using the Left or Middle button.  See 'Disable Gestures Key' for additional options when using the Left button."
+    },
+    "disableKeyHelp": {
+        "message": "Select a button that, when pressed, will disable gesture capturing.  This is only useful if 'Mouse Gesture Button' is assigned to the 'Left', as this can be used to enable text/element selection as needed.  This option does not conflict with using the Middle or Right button, but this option is generally useless for Middle/Right as it provides no added value.  For the Middle button,  Chrome will cancel scrolling via clicking the Middle button when any key is pressed.  For the Right button, key modifiers are automatically accounted for during gesture processing and the context menu will automically be shown if no matching gesture is found, e.g. pressing ALT while performing a gesture will effectively disable gestures unless you have a matching gesture using the ALT modifier.  **WARNING** Selecting a disable key will effectively disable any gestures that rely on that modifier key."
+    },
+    "newTabUrlHelp": { "message": "Specify the URL to load when opening a new tab.  Specify chrome://newtab to load Chrome's New Tab page." },
+    "newIncognitoTabUrlHelp": { "message": "Specify the URL to load when opening a new Incognito tab.  Specify chrome://newtab to load Chrome's New Tab page.  Note that Chrome does not inject extensions on its Incognito New Tab page." },
+    "newTabRightHelp": { "message": "Open new tabs that do not have a predefined URL, ie: blank tabs, next to the current tab." },
+    "newTabFromUrlRightHelp": { "message": "Open new tabs that have predefined URL, e.g. from links, images or shorcuts, next to the current tab." },
+    "doNotClosePinnedTabsHelp": { "message": "Do close pinned tabs when closing one or more tabs as part of a gesture.  This does not prevent the tab from being closed by Chrome, e.g. via CTRL-W, nor does it prevent the tab from being closed when its window is closed." },
+    "focusChromeOnCloseWindowHelp": { "message": "Focus on the last used Chrome window when closing a window (assuming there are multiple windows open).  By default Chrome defers to the OS which may result in a non-Chrome window being activated." },
+    "rockerContextMenuHelp": { "message": "Display the context menu on 'ROCKER LEFT RIGHT' if the target is not a link, thus providing a method for displaying the context menu without a key press.  This silently overrides the 'ROCKER LEFT RIGHT' gesture; links and gestures with key modifiers are not affected.  This option has no affect on Windows.  On Linux, Chrome triggers the context menu on mousedown, and so Gestures speculatively suppresses the context menu.  Unfortunately, Chrome also fails to provide a way to manually trigger the context menu.  See https://bugs.chromium.org/p/chromium/issues/detail?id=28226 for details.  **WARNING** If you disable this option, it is strongly recommended that you set a 'Disable Gestures Key' under 'Show Advanced Options', else it will be extremely difficult to trigger the context menu." },
+    "allowIncognitoAddToReadingListHelp": { "message": "Allow Incognito tabs to be added to the reading list.  Disabling this prevents accidentally adding an Incognito tab URL to your reading list." },
+    "showAdvancedOptionsHelp": { "message": "Show the advanced options, which allow you change the mouse gestures button and specify a key to explicitly disable gesture capturing."},
+
+    "reloadAllTabsOnUpdateHelp": { "message": "Reload all tabs when Gestures is updated (happens very infrequently).  **WARNING** Disabling this may cause gestures to stop working on tabs until each tab is reloaded." },
+    "stopHelp": { "message": "Stop loading the current tab." },
+    "backHelp": { "message": "Go to the previous page in the history for the current tab." },
+    "forwardHelp": { "message": "Go to the next page in the history for the current tab." },
+    "printHelp": { "message": "Print the current tab." },
+    "newWindowHelp": { "message": "Open 'New Tab Url' in a new window." },
+    "newIncognitoWindowHelp": { "message": "Open 'New Incognito Tab Url' in a new Incognito window." },
+    "newWindowFromLinkHelp": { "message": "Open the target link in a new window." },
+    "newIncognitoWindowFromLinkHelp": { "message": "Open the target link in a new Incognito window." },
+    "newWindowFromImageHelp": { "message": "Open the target image in a new window." },
+    "newIncognitoWindowFromImageHelp": { "message": "Open the target image in a new Incognito window." },
+    "closeWindowHelp": { "message": "Close the current window." },
+    "closeOtherWindowsHelp":  { "message": "Close all windows except the current window." },
+    "closeAllWindowsHelp": { "message": "Close all windows." },
+    "closeAllIncognitoWindowsHelp": { "message": "Close all Incognito windows, leaving normal windows open." },
+    "mergeAllWindowsHelp": { "message": "Merge all tabs in all windows into a single window." },
+    "gotoNewTabPageHelp": { "message": "Navigate the current tab to the 'New Tab Url'." },
+    "reloadAllTabsHelp": { "message": "Reload all tabs in all windows." },
+    "reloadAllTabsBypassCacheHelp": { "message": "Reload all tabs in all windows, bypassing Chrome's cache." },
+    "reloadTabHelp": { "message": "Reload the current tab." },
+    "reloadTabBypassCacheHelp": { "message": "Reload the current tab, bypassing Chrome's cache." },
+    "newTabHelp": { "message": "Open 'New Tab Url' in a new tab." },
+    "newBackgroundTabHelp": { "message": "Open 'New Tab Url' in a new background tab." },
+    "newTabFromLinkHelp": { "message": "Open the target link in a new tab." },
+    "newBackgroundTabFromLinkHelp": { "message": "Open the target link in a new background tab." },
+    "newTabFromImageHelp": { "message": "Open the target image in a new tab." },
+    "newBackgroundTabFromImageHelp": { "message": "Open the target image in a new background tab." },
+    "downloadImageHelp": { "message": "Download the target image to Chrome's download folder." },
+    "duplicateTabHelp": { "message": "Open a duplicate of the current tab." },
+    "splitTabsHelp": { "message": "Split the current window into two windows, moving the current tab and all tabs to its right to a new window." },
+    "closeTabHelp": { "message": "Close the current tab." },
+    "closeOtherTabsInWindowHelp": { "message": "Close all tabs in the window except the current tab." },
+    "closeAllOtherTabsHelp": { "message": "Close all tabs in all windows except for the current tab.  This will effectively close all other windows except the current window." },
+    "closeTabsLeftHelp": { "message": "Close all tabs to the left of the current tab in the window." },
+    "closeTabsRightHelp": { "message": "Close all tabs to the left of the current tab in the window." },
+    "previousTabHelp": { "message": "Activate the previous tab." },
+    "nextTabHelp": { "message": "Activate the next tab." },
+    "moveTabLeftHelp": { "message": "Move the current tab one tab left in the window." },
+    "moveTabRightHelp": { "message": "Move the current tab one tab right in the window." },
+    "toggleTabPinnedHelp": { "message": "Toggle the pinned status of the current tab." },
+    "pinTabHelp": { "message": "Pin the current tab." },
+    "unpinTabHelp": { "message": "Unpin the current tab." },
+    "stashTabHelp": { "message": "Stash the current tab.  Similar to 'Pin Tab'.  Moves the tab to the far left, disassociates it from its parent and makes the next tab active." },
+    "toggleTabMutedHelp": { "message": "Toggle the muted status of the current tab." },
+    "muteTabHelp": { "message": "Mute the current tab." },
+    "unmuteTabHelp": { "message": "Unmute the current tab." },
+    "muteAllTabsHelp": { "message": "Mute all tabs in all windows." },
+    "unmuteAllTabsHelp": { "message": "Unmute all tabs in all windows." },
+    "muteAllOtherTabsHelp":{ "message": "Mute all tabs in all windows except the current tab." },
+
+    "searchSelectionInNewTabHelp": { "message": "Open a new tab and perform a Google search using the selected text from the current tab." },
+    "openHistoryHelp": { "message": "Open Chrome's History in a new tab." },
+    "openBookmarksHelp": { "message": "Open Chrome's Bookmark Manager in a new tab." },
+    "openDownloadsHelp": { "message": "Open Chrome's Downloads in a new tab." },
+    "openExtensionsHelp": { "message": "Open Chrome's Extensions in a new tab." },
+    "openSettingsHelp": { "message": "Open Chrome's Settings in a new tab." },
+    "openClearBrowsingDataHelp": { "message": "Open Chrome's Clear Browsing Data in a new tab." },
+    "openOptionsHelp": { "message": "Open Gesture's Options in a new tab." },
+    "viewSourceHelp": { "message": "View the source of the current tab in a new tab." },
+    "addToReadingListHelp": { "message": "Add the current tab to Gestures' Reading List." },
+    "removeFromReadingListHelp": { "message": "Remove the current tab from Gestures' Reading List." },
+    "openReadingListHelp": { "message": "Open Gestures' Reading List in a new tab." },
+    "enableMouseGesturesHelp": { "message": "(Re)-enable Mouse Gestures for the current tab." },
+    "disableMouseGesturesHelp": { "message": "Disable Mouse Gestures for the current tab.  Rocker Gestures are not affected.  Useful on Linux to give enable use context menus on specific pages without a modifier key." },
+
+    "searchPlaceholder": {
+        "message": "Press / or click to search for an option!"
+    },
+    "noOptionFound":  {
+        "message": "No option found for <strong>$search$</strong>.",
+        "placeholders": {
+            "search": { "content": "$1" }
+        }
+    },
+
+    "lsdPlaceholder": {
+        "message": "Enter a name!"
+    },
+    "savedAsDefault": {
+        "message": "Current config is the <strong>Default</strong> config."
+    },
+    "savedAs": {
+        "message": "Current config is saved as <strong>$name$</strong>.",
+        "placeholders": {
+            "name": { "content": "$1" }
+        }
+    },
+    "notSaved": {
+        "message": "Current config has not been saved."
+    },
+    "databaseUsage": {
+        "message": "$used$ configs saved, space for approximately $remaining$ more configs.",
+        "placeholders": {
+            "used": { "content": "$1" },
+            "remaining": { "content": "$2" }
+        }
+    },
+    "saveAs": {
+        "message": "Save config as <strong>$name$</strong>.",
+        "placeholders": {
+            "name": { "content": "$1" }
+        }
+    },
+    "invalidName": {
+        "message": "$invalid$ is not a valid name, only A-Z, 0-9 and _ are allowed.",
+        "placeholders": {
+            "invalid": { "content": "$1" }
+        }
+    },
+    "storageErrorTitle": {
+        "message": "Storage Error"
+    },
+    "storageError": {
+        "message": "Unable to save config, please delete unnecessary configs to free up space."
+    },
+    "invalidOverwrite": {
+        "message": "The <strong>Default</strong> and <strong>Options</strong> configs cannot be overwritten."
+    },
+    "noSavedMatching": {
+        "message": "Did not find any saved config matching <strong>$search$</strong>.",
+        "placeholders": {
+            "search": { "content": "$1" }
+        }
+    },
+    "loadFrom" : {
+        "message": "Load <strong>$name$</strong> config.",
+        "placeholders": {
+            "name": { "content": "$1" }
+        }
+    },
+    "loadFromUnsaved" : {
+        "message": "Load <strong>$name$</strong> config.  Your current config has not been saved and will be lost!",
+        "placeholders": {
+            "name": { "content": "$1" }
+        }
+    },
+
+    "deleteFrom" : {
+        "message": "Delete <strong>$name$</strong> config from database.",
+        "placeholders": {
+            "name": { "content": "$1" }
+        }
+    },
+
+    "gestureInUse": {
+        "message": "Gesture is already in use for <strong>$existing$</strong>.",
+        "placeholders": {
+            "existing": { "content": "$1" }
+        }
+    },
+    "performGesture": {
+        "message": "Perform a gesture anywhere on the screen.  Hit <strong>ESC</strong> or click <strong>Cancel</strong> to exit."
+    },
+    "performNewGesture": {
+        "message": "Perform a new gesture if you don't want to save this one.  Hit <strong>ESC</strong> or click <strong>Cancel</strong> to exit."
+    },
+
+    "exportPrompt": {
+        "message": "Hit <strong>ENTER</strong> or click <strong>Copy</strong> to copy this config to the clipboard."
+    },
+
+
+    "importPrompt": {
+        "message": "Paste Config to Import"
+    },
+
+    "importMissingProperty": {
+        "message": "Missing property '$key$' for $name$.",
+        "placeholders": {
+            "key": { "content": "$1" },
+            "name": { "content": "$2" }
+        }
+    },
+    "importInvalidButton": {
+        "message": "Invalid value for button, only Left/Middle/Right are supported ($left$, $middle$ and $right$ respectively).",
+        "placeholders": {
+            "left": { "content": "$1" },
+            "middle": { "content": "$2" },
+            "right": { "content": "$3" }
+        }
+    },
+    "importUnknownType": {
+        "message": "Unknown gesture type '$type$' for $action$.",
+        "placeholders": {
+            "type": { "content": "$1" },
+            "action": { "content": "$2" }
+        }
+    },
+    "importUnknownProperty": {
+        "message": "Unknown property '$key$' for $name$.",
+        "placeholders": {
+            "key": { "content": "$1" },
+            "name": { "content": "$2" }
+        }
+    },
+    "importInvalidPropertyType": {
+        "message": "Invalid property type for $name$.$key$, expected: $expected$, actual: $actual$.",
+        "placeholders": {
+            "name": { "content": "$1" },
+            "key": { "content": "$2" },
+            "expected": { "content": "$3" },
+            "actual": { "content": "$4" }
+        }
+    },
+     "importEmptyGesture": {
+        "message": "Invalid gesture in $action$, empty gestures are not allowed.",
+        "placeholders": {
+            "action": { "content": "$1" }
+        }
+    },
+    "importInvalidMouse": {
+        "message": "Invalid mouse gesture $gesture$ in $action$, mouse gestures must contain at least one directional code, 'U', 'D', 'L' or 'R'.",
+        "placeholders": {
+            "gesture": { "content": "$1" },
+            "action": { "content": "$2" }
+        }
+    },
+    "importInvalidRocker": {
+        "message": "Invalid rocker gesture $gesture$ in $action$, rocker gestures must contain exactly two different buttons code, 'L' and 'R'.",
+        "placeholders": {
+            "gesture": { "content": "$1" },
+            "action": { "content": "$2" }
+        }
+    },
+    "importInvalidRockerUD": {
+        "message": "Invalid rocker gesture code $code$ in $action$, rocker gestures cannot contain 'U' or 'D' as they are not valid mouse buttons.",
+        "placeholders": {
+            "code": { "content": "$1" },
+            "action": { "content": "$2" }
+        }
+    },
+    "importInvalidModifier": {
+        "message": "Invalid gesture modifier code '$code$' in $action$.  Modifiers must follow the order 'c-a-m-s' and must be specified before all 'U', 'D', 'L' and 'R' codes.  Duplicate modifiers are not allowed.",
+        "placeholders": {
+            "code": { "content": "$1" },
+            "action": { "content": "$2" }
+        }
+    },
+    "importUnknownCode": {
+        "message": "Unknown gesture code '$code$' in $action$.  Valid codes are 'c', 'a', 'm', 's', 'U', 'D', 'L' and 'R', case sensitive.",
+        "placeholders": {
+            "code": { "content": "$1" },
+            "action": { "content": "$2" }
+        }
+    },
+    "importDuplicateGesture": {
+        "message": "Duplicate gesture for $action$, already used for $existing$.",
+        "placeholders": {
+            "action": { "content": "$1" },
+            "existing": { "content": "$2" }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+	"manifest_version": 2,
+
+	"name": "__MSG_name__",
+	"description": "__MSG_description__",
+	"version": "1.1",
+
+	"minimum_chrome_version": "45.0",
+
+	"default_locale": "en",
+
+	"permissions": [
+		"bookmarks",
+		"contextMenus",
+		"downloads",
+		"storage",
+		"tabs",
+		"clipboardWrite"
+	],
+
+	"icons": {
+		"16": "img/z_16x16.png",
+		"32": "img/z_32x32.png",
+		"48": "img/z_48x48.png",
+		"128": "img/z_128x128.png"
+	},
+
+	"background": {
+		"page": "background.html"
+	},
+
+	"options_ui": {
+		"page": "options.html",
+		"open_in_tab": true
+	},
+
+
+
+	"content_security_policy": "script-src 'self'; object-src 'self'",
+
+	"content_scripts": [
+		{
+			"matches": [ "\u003Call_urls\u003E" ],
+			"js": [ "js/enums.js", "js/utilities.js", "js/eventmanager.js", "js/gesture.js", "js/mousegesture.js", "js/rockergesture.js", "js/gestures.js", "js/contentactions.js", "js/handler.js", "js/content.js" ],
+			"run_at": "document_start",
+			"all_frames": true
+		}
+	],
+
+	"web_accessible_resources": [
+		"img/*.png"
+	]
+}

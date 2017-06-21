@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 -1400 32 32"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="z_32x32.svg"
+   inkscape:export-filename="C:\Users\Sean\Development\go\src\github.com\zombull\gestures\app\img\z_16x16.png"
+   inkscape:export-xdpi="1.5"
+   inkscape:export-ydpi="1.5"
+   inkscape:version="0.92.1 r15371"
+   width="32"
+   height="32">
+  <metadata
+     id="metadata18">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs16" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1147"
+     id="namedview14"
+     showgrid="false"
+     fit-margin-bottom="-0.1"
+     units="px"
+     width="1024px"
+     showguides="false"
+     inkscape:zoom="18.101934"
+     inkscape:cx="10.262662"
+     inkscape:cy="9.4672771"
+     inkscape:window-x="-8"
+     inkscape:window-y="232"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg12">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4527" />
+  </sodipodi:namedview>
+  <rect
+     style="fill:#ff3900;fill-opacity:1;stroke:none;stroke-opacity:1"
+     id="rect6699"
+     width="12.44451"
+     height="8.8888998"
+     x="7.1110702"
+     y="-1385.7778" />
+  <path
+     unicode="Z"
+     d="m 32.00007,-1378.6666 h -1.77778 v 1.7777 H 28.4445 v 1.7778 h -1.77779 v -1.7778 h -1.77778 v 1.7778 h 1.77778 v 1.7778 h -1.77778 v 1.7778 h -1.77779 v -1.7778 h -1.77778 v 1.7778 h -1.77779 l 10e-6,-1.7778 h -1.77779 v 1.7778 H 16 v -1.7778 h -1.77779 v 1.7778 h -1.77778 v -1.7778 h -1.77779 v 1.7778 H 8.88886 v -1.7778 H 7.11107 v 1.7778 H 5.33329 v -1.7778 H 3.5555 v 1.7778 H 1.77771 v -1.7778 H -7e-5 v -1.7778 h 1.77778 v -1.7778 H -7e-5 v -1.7777 h 1.77778 v -1.7778 H -7e-5 v -1.7778 H 1.77771 V -1384 H -7e-5 v -1.7778 h 1.77778 v -1.7778 H -7e-5 v -1.7778 h 1.77778 v -1.7777 H 3.5555 v 1.7777 h 1.77779 v -1.7777 H 3.5555 v -1.7778 h 1.77779 v -1.7778 h 1.77778 v -1.7778 h 23.11122 v 1.7778 H 28.4445 v 1.7778 h -1.77779 v 1.7778 h -1.77778 v 1.7777 h 1.77778 v -1.7777 h 1.77779 v -1.7778 h 1.77779 v -1.7778 h 1.77778 z m -8.88893,-10.6668 v -1.7777 h -1.77778 v 1.7777 z m 3.55557,3.5556 v -1.7778 h -1.77778 v 1.7778 z m -7.11114,-3.5556 v -1.7777 h -1.77778 v 1.7777 z m 7.11114,7.1112 V -1384 h -1.77778 v 1.7778 z M 16,-1389.3334 v -1.7777 h -1.77779 v 1.7777 z m 10.66671,10.6668 v -1.7778 h -1.77778 v 1.7778 z m -14.22228,-10.6668 v -1.7777 h -1.77779 v 1.7777 z m -3.55557,0 v -1.7777 H 7.11107 v 1.7777 z m 10.66672,12.4445 v -1.7777 h -5.33337 v -1.7778 H 16 v -1.7778 h 1.77779 V -1384 h 1.77778 v -1.7778 H 7.11107 V -1384 h 5.33336 v 1.7778 h -1.77779 v 1.7778 H 8.88886 v 1.7778 H 7.11107 v 1.7777 z"
+     id="path10"
+     style="fill:#00efde;fill-opacity:1;stroke-width:0.01777786"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
+</svg>

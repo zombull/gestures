@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Options</title>
+
+        <style>[ng-cloak] { display: none; }</style>
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+
+        <!-- inject:css -->
+        <link rel="stylesheet" href="options/material-icons/material-icons.css">
+        <link rel="stylesheet" href="options/bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" href="options/v5_bloques/v5_bloques.css">
+        <link rel="stylesheet" href="options/style.css">
+        <!-- endinject -->
+    </head>
+    <body ng-app="gestures" ng-cloak>
+        <div layout="column" tabindex="-1" flex id="main" ng-controller="UIController">
+            <md-toolbar id="search-toolbar" class="site-content-toolbar" ng-cloak>
+                <div layout="row" layout-align="center" flex class="fill-height">
+                    <h1 layout-margin class="md-toolbar-item v5-bloques">ZOMBULL</h1>
+                </div>
+                <div layout-margin flex class="md-toolbar-item" ng-controller="SearchController as ctrl">
+                    <md-autocomplete
+                        placeholder="{{'searchPlaceholder' | i18n}}"
+                        md-input-id="search"
+                        md-selected-item="ctrl.selectedItem"
+                        md-selected-item-change="ctrl.selectedItemChange(item)"
+                        md-search-text="ctrl.searchText"
+                        md-items="item in ctrl.search(ctrl.searchText)"
+                        md-item-text="item.name"
+                        md-autoselect="true"
+                        md-min-length="0"
+                        md-delay="0">
+
+                        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+
+                        <md-not-found ng-bind-html="'noOptionFound' | i18n:ctrl.searchText"></md-not-found>
+                    </md-autocomplete>
+                </div>
+            </md-toolbar>
+
+            <br>
+
+            <md-content layout="row">
+
+                <div ng-if="savedName && savedName != 'Default'" layout-margin ng-bind-html="'savedAs' | i18n:savedName"></div>
+                <div ng-if="savedName && savedName == 'Default'" layout-margin ng-bind-html="'savedAsDefault' | i18n"></div>
+                <div ng-if="!savedName" layout-margin ng-bind-html="'notSaved' | i18n"></div>
+                <div flex></div>
+                <div ng-if="databaseUsage" layout-margin ng-bind-html="'databaseUsage' | i18n:databaseUsage"></div>
+            </md-content>
+
+            <md-content layout="row" layout-align="center" flex ng-cloak>
+                <md-button class="md-raised" ng-click="help($event)">{{"help" | i18n}}</md-button>
+                <md-button class="md-raised" ng-click="import($event)">{{"import" | i18n}}</md-button>
+                <md-button class="md-raised" ng-click="export($event)">{{"export" | i18n}}</md-button>
+                <span flex hide-sm hide-md></span>
+                <md-button class="md-raised" ng-click="lsd($event, 'delete')">{{"delete" | i18n}}</md-button>
+                <md-button class="md-raised" ng-click="lsd($event, 'load')">{{"load" | i18n}}</md-button>
+                <md-button class="md-raised" ng-click="lsd($event, 'save')">{{"save" | i18n}}</md-button>
+            </md-content>
+
+            <br>
+
+            <md-content style="padding-bottom: 15px;" layout="row" layout-wrap flex ng-if="options">
+                <div flex="50" tabindex="-1" id="{{::option}}" ng-repeat="option in ::bools track by option">
+                    <md-switch ng-model="options[option]" ng-change="sync()" ng-click="help($event, option)">{{option | i18n}}</md-switch>
+                </div>
+            </md-content>
+
+            <br>
+
+            <md-content layout="row" layout-margin layout-wrap flex ng-if="options">
+                <md-input-container flex="50" tabindex="-1" ng-repeat="option in ::strings track by option">
+                    <label>{{option | i18n}}</label>
+                    <input id="{{option}}" ng-model="options[option]" ng-model-options='{ debounce: 250 }'ng-change="sync()">
+                </md-input-container>
+            </md-content>
+
+            <br>
+
+            <md-content layout-margin ng-if="options.showAdvancedOptions">
+                <div class="radio-label" ng-click="help($event, 'button')">{{"button" | i18n}}</div>
+                <md-radio-group layout="row" md-no-ink ng-model="options.button" ng-change="sync()">
+                    <md-radio-button data-ng-value="0">{{"left" | i18n}}</md-radio-button>
+                    <md-radio-button data-ng-value="1">{{"middle" | i18n}}</md-radio-button>
+                    <md-radio-button data-ng-value="2">{{"right" | i18n}}</md-radio-button>
+                </md-radio-group>
+            </md-content>
+
+            <md-content layout-margin ng-if="options.showAdvancedOptions">
+                <div class="radio-label" ng-click="help($event, 'disableKey')">{{"disableKey" | i18n}}</div>
+                <md-radio-group layout="row" md-no-ink ng-model="options.disableKey" ng-change="sync()">
+                    <md-radio-button data-ng-value="0">{{"none" | i18n}}</md-radio-button>
+                    <md-radio-button data-ng-value="1">{{"alt" | i18n}}</md-radio-button>
+                    <md-radio-button data-ng-value="2">{{"ctrl" | i18n}}</md-radio-button>
+                    <md-radio-button data-ng-value="3">{{"meta" | i18n}}</md-radio-button>
+                    <md-radio-button data-ng-value="4">{{"shift" | i18n}}</md-radio-button>
+                </md-radio-group>
+            </md-content>
+
+            <br>
+
+            <md-content layout-align="center" layout-margin flex ng-if="options">
+                <div class="action-container" tabindex="-1" id="{{::action}}" ng-repeat="action in ::actions track by action">
+                    <div class="entry" layout="row" ng-repeat="gesture in options.actions[action] track by $index">
+                        <div class="action" flex="50" ng-click="help($event, action)" ng-if="$first">{{action | i18n}}</div>
+                        <div class="blank" flex="50" ng-if="!$first"></div>
+
+                        <div class="gesture" flex layout="row">
+                            <div flex class="gesture-details" ng-bind-html="gestureDetails(gesture)"></div>
+                            <div offset="80" class="edit" ng-click="edit($event, action, gesture)"><i class="material-icons">edit</i></div>
+                            <div offset="90" class="delete" ng-click="delete($event, action, gesture)"><i class="material-icons">close</i></div>
+                        </div>
+
+                        <div class="add" ng-click="edit($event, action)"><i class="material-icons">add</i></div>
+                    </div>
+
+                    <div ng-if="!options.actions[action].length">
+                        <div class="entry" layout="row">
+                            <div class="action" flex="50" ng-click="help($event, action)">{{action | i18n}}</div>
+                            <div class="gesture" flex></div>
+                            <div class="add" ng-click="edit($event, action)"><i class="material-icons">add</i></div>
+                        </div>
+                    </div>
+                </div>
+            </md-content>
+        </div>
+
+        <!-- inject:js -->
+        <script src="options/bower_components/angular/angular.js"></script>
+        <script src="options/bower_components/angular-animate/angular-animate.js"></script>
+        <script src="options/bower_components/angular-aria/angular-aria.js"></script>
+        <script src="options/bower_components/angular-material/angular-material.js"></script>
+        <script src="options/bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="options/bower_components/lodash/lodash.js"></script>
+        <script src="js/enums.js"></script>
+        <script src="js/utilities.js"></script>
+        <script src="js/defaultoptions.js"></script>
+        <script src="js/eventmanager.js"></script>
+        <script src="js/gesture.js"></script>
+        <script src="js/gestures.js"></script>
+        <script src="js/mousegesture.js"></script>
+        <script src="js/rockergesture.js"></script>
+        <script src="js/handler.js"></script>
+        <script src="options/app.js"></script>
+        <script src="options/capture.js"></script>
+        <script src="options/services/database.js"></script>
+        <script src="options/services/details.js"></script>
+        <script src="options/services/edit.js"></script>
+        <script src="options/services/error.js"></script>
+        <script src="options/services/export.js"></script>
+        <script src="options/services/help.js"></script>
+        <script src="options/services/import.js"></script>
+        <script src="options/services/lsd.js"></script>
+        <script src="options/services/safeapply.js"></script>
+        <script src="options/filters/i18n.js"></script>
+        <script src="options/controllers/ui.js"></script>
+        <script src="options/controllers/search.js"></script>
+        <!-- endinject -->
+    </body>
+</html>
