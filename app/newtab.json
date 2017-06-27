@@ -1,0 +1,21 @@
+{
+    "css": [
+        "app/newtab/style.css",
+        "app/newtab/weather.css"
+    ],
+    "js": [
+        "app/js/enums.js",
+        "app/js/utilities.js",
+        "app/js/eventmanager.js",
+        "app/js/gesture.js",
+        "app/js/gestures.js",
+        "app/js/mousegesture.js",
+        "app/js/rockergesture.js",
+        "app/js/contentactions.js",
+        "app/js/handler.js",
+        "app/js/content.js",
+
+        "app/newtab/jquery-3.2.1.min.js",
+        "app/newtab/weather.js"
+    ]
+}
