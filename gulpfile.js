@@ -19,7 +19,8 @@ var _ = require('lodash'),
 	del = require('del'),
     messages = require('./app/_locales/en/messages'),
 	manifest = require('./app/manifest'),
-   	newtab = require('./app/newtab'),
+	bookmarks = require('./app/bookmarks'),
+    newtab = require('./app/newtab'),
 	options = require('./app/options'),
 	background = require('./app/background');
 
@@ -58,6 +59,36 @@ gulp.task('background', function () {
 
     return gulp.src('app/background.html')
         .pipe(gulp.dest('build'))
+        .pipe(inject(js, {relative: true}))
+        .pipe(cleanhtml())
+        .pipe(gulp.dest('build'));
+});
+
+gulp.task('bookmarks', function () {
+    var cssFilter = filter(['*', '!**/*.min.css'], {restore: true });
+    var jsFilter = filter(['*', '!**/*.min.js'], {restore: true });
+
+    var css = gulp.src(bookmarks.css)
+        .pipe(cssFilter)
+        .pipe(concat('bookmarks.css'))
+        .pipe(gulp.dest('build/style'))
+        .pipe(rename('bookmarks.min.css'))
+        .pipe(minifycss())
+        .pipe(cssFilter.restore)
+        .pipe(gulp.dest('build/style'));
+
+    var js = gulp.src(bookmarks.js)
+        .pipe(jsFilter)
+        .pipe(concat('bookmarks.js'))
+        .pipe(gulp.dest('build/js'))
+        .pipe(rename('bookmarks.min.js'))
+        .pipe(uglify())
+        .pipe(jsFilter.restore)
+        .pipe(gulp.dest('build/js'));
+
+    return gulp.src('app/bookmarks.html')
+        .pipe(gulp.dest('build'))
+        .pipe(inject(css, {relative: true}))
         .pipe(inject(js, {relative: true}))
         .pipe(cleanhtml())
         .pipe(gulp.dest('build'));
@@ -170,7 +201,7 @@ gulp.task('jshint', function() {
 });
 
 //build ditributable and sourcemaps after other tasks completed
-gulp.task('zip', ['manifest', 'content', 'background', 'newtab', 'options', 'dialogs', 'img', '_locales', 'fonts'], function() {
+gulp.task('zip', ['manifest', 'content', 'background', 'bookmarks', 'newtab', 'options', 'dialogs', 'img', '_locales', 'fonts'], function() {
 
     // Filter out non-minified CSS/JS.
     var zipFilter = filter(function (file) {
@@ -196,6 +227,12 @@ gulp.task('background-debug', function() {
         .pipe(gulp.dest('app'));
 });
 
+gulp.task('bookmarks-debug', function() {
+    return gulp.src('app/bookmarks.html')
+        .pipe(inject(gulp.src(bookmarks.css.concat(bookmarks.js), {read: false}), {relative: true}))
+        .pipe(gulp.dest('app'));
+});
+
 gulp.task('newtab-debug', function() {
     return gulp.src('app/newtab.html')
     	.pipe(inject(gulp.src(newtab.css.concat(newtab.js), {read: false}), {relative: true}))
@@ -208,6 +245,6 @@ gulp.task('options-debug', function() {
         .pipe(gulp.dest('app'));
 });
 
-gulp.task('debug', ['background-debug', 'newtab-debug', 'options-debug'], function() {
+gulp.task('debug', ['background-debug', 'bookmarks-debug', 'newtab-debug', 'options-debug'], function() {
 
 });

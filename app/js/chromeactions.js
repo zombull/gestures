@@ -291,7 +291,7 @@
     };
 
     ZOMBULL.ChromeActions.prototype.openBookmarks = function (message) {
-        this.newTab(message, 'chrome://bookmarks/');
+        this.newTab(message, 'bookmarks.html');
     };
 
     ZOMBULL.ChromeActions.prototype.openDownloads = function (message) {
