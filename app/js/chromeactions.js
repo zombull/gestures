@@ -248,10 +248,11 @@
 
     ZOMBULL.ChromeActions.prototype.stashTab = function (message) {
         chrome.tabs.move(message.tab.id, { index: 0 });
+        chrome.tabs.duplicate(message.tab.id);
         chrome.tabs.query({ windowId: message.tab.windowId }, function (tabs) {
             chrome.tabs.update(tabs[tabs.length - 1].id, { active: true });
         });
-        chrome.tabs.update(message.tab.id, { openerTabId: message.tab.id });
+        chrome.tabs.remove(message.tab.id);
     };
 
     ZOMBULL.ChromeActions.prototype.toggleTabMuted = function (message) {
