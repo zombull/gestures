@@ -152,10 +152,6 @@
         this.newTabFromImage(message);
     };
 
-    ZOMBULL.ChromeActions.prototype.downloadImage = function (message) {
-        chrome.downloads.download({ url: message.image, conflictAction: 'uniquify' });
-    };
-
     ZOMBULL.ChromeActions.prototype.duplicateTab = function (message) {
         chrome.tabs.duplicate(message.tab.id);
     };

@@ -41,7 +41,6 @@
             newBackgroundTabFromLink: initGesture('D').concat(initGesture('RL', ZOMBULL.GestureType.ROCKER)),
             newTabFromImage: [],
             newBackgroundTabFromImage: [],
-            downloadImage: initGesture('cD'),
             splitTabs: initGesture('cUR').concat(initGesture('cLR', ZOMBULL.GestureType.ROCKER)),
             closeTab: initGesture('DR'),
             closeOtherTabsInWindow: [],
@@ -115,7 +114,6 @@
         newBackgroundTabFromImage: ZOMBULL.GestureTarget.IMAGE,
         newWindowFromImage: ZOMBULL.GestureTarget.IMAGE,
         newIncognitoWindowFromImage: ZOMBULL.GestureTarget.IMAGE,
-        downloadImage: ZOMBULL.GestureTarget.IMAGE,
 
         searchSelectionInNewTab: ZOMBULL.GestureTarget.SELECTION,
         searchSelectionInNewBackgroundTab: ZOMBULL.GestureTarget.SELECTION,
