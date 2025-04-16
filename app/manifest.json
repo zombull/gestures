@@ -51,7 +51,18 @@
 	"content_scripts": [
 		{
 			"matches": [ "\u003Call_urls\u003E" ],
-			"js": [ "js/enums.js", "js/utilities.js", "js/eventmanager.js", "js/gesture.js", "js/mousegesture.js", "js/rockergesture.js", "js/gestures.js", "js/contentactions.js", "js/handler.js", "js/content.js" ],
+			"js": [
+				"js/enums.js",
+				"js/utilities.js",
+				"js/eventmanager.js",
+				"js/gesture.js",
+				"js/mousegesture.js",
+				"js/rockergesture.js",
+				"js/gestures.js",
+				"js/contentactions.js",
+				"js/handler.js",
+				"js/content.js"
+			],
 			"run_at": "document_start",
 			"all_frames": true
 		}
