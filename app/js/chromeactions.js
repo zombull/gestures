@@ -374,6 +374,6 @@ ZOMBULL.ChromeActions.prototype.removeFromReadingList = function (message) {
 ZOMBULL.ChromeActions.prototype.openReadingList = function (message) {
     var actions = this;
     this._getReadingList(function (readingList) {
-        actions.newTab(message, 'chrome://bookmarks/#{0}'.format(readingList.id));
+        actions.newTab(message, 'chrome://bookmarks/?id={0}'.format(readingList.id));
     });
 };
