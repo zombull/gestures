@@ -21,8 +21,14 @@ var oapBootstrapVer = "2013-06-24-11-28",
                 });
                 b = a.data();
                 b.css = null;
-                f.getJSON(e[a.get(0).awType].url + "?callback=?", b, function(b) {
-                    f.each(f.parseHTML(b.html), function(i, d) {
+
+                f.get(e[a.get(0).awType].url, function(data) {
+                    // Strip the leading "callback({'html':'" and trailing "'});",
+                    // which apparently is all the callback script does...
+                    data = data.substring(18, data.length);
+                    data = data.substring(0, data.length - 4);
+
+                    f.each(f.parseHTML(data), function(i, d) {
                         if (d.type === 'text/css') {
                             f('head')[0].appendChild(d);
                         } 
@@ -33,7 +39,7 @@ var oapBootstrapVer = "2013-06-24-11-28",
                             f('.aw-get-widget-footer').remove();
                         }
                     });
-                })
+                });
             }
         })
     }(window.jQuery));
