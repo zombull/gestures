@@ -43,19 +43,7 @@
 
     ZOMBULL.Background.prototype.onChanged = function (changes, namespace) {
         if (namespace === 'sync' && changes.hasOwnProperty('options') && changes.options.newValue) {
-            background._options = changes.options.newValue;
-
-            // Notify all connected handlers (tabs and frames) of the new options.
-            for (var tabKey in background._handlers) {
-                if (background._handlers.hasOwnProperty(tabKey)) {
-                    var handlers = background._handlers[tabKey];
-                    for (var key in handlers) {
-                        if (handlers.hasOwnProperty(key)) {
-                            handlers[key].postMessage({ method: 'reset', options: background._options, linux: background._linux });
-                        }
-                    }
-                }
-            }
+            background._chromeActions.reloadAllTabs();
         }
     };
 
