@@ -190,7 +190,7 @@ gulp.task('jshint', function() {
 	var jsHintOptions = {
 		browser: true,
 		eqnull: true,
-		globals: { chrome: false, ZOMBULL: true },
+		globals: { chrome: false, console: true, ZOMBULL: true },
 		globalstrict: true,
 		"-W041": false
 	};

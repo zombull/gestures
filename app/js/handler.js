@@ -46,6 +46,10 @@ ZOMBULL.Handler.prototype.tabInactive = function (message) {
     this._rocker.end();
 };
 
+ZOMBULL.Handler.prototype.logMessage = function (message) {
+    console.log(message.message);
+};
+
 ZOMBULL.Handler.prototype.onContextMenu = function (event) {
     if (this._linux) {
         this._blockContextMenu = false;
