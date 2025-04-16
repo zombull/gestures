@@ -51,7 +51,7 @@
                     var handlers = background._handlers[tabKey];
                     for (var key in handlers) {
                         if (handlers.hasOwnProperty(key)) {
-                            handlers[key].postMessage({ method: 'reset', options: background._options, targets: ZOMBULL.ActionTargets, linux: background._linux });
+                            handlers[key].postMessage({ method: 'reset', options: background._options, linux: background._linux });
                         }
                     }
                 }
@@ -112,7 +112,7 @@
                 });
 
                 // Send a message back to reset the the handler, passing in the current options.
-                port.postMessage({ method: 'reset', options: background._options, targets: ZOMBULL.ActionTargets, linux: background._linux });
+                port.postMessage({ method: 'reset', options: background._options, linux: background._linux });
             }
         }
     };

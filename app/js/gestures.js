@@ -18,14 +18,14 @@ ZOMBULL.Gestures.prototype._reset = function() {
     this._init(ZOMBULL.GestureTarget.SELECTION);
 };
 
-ZOMBULL.Gestures.prototype.reset = function (options, targets) {
+ZOMBULL.Gestures.prototype.reset = function (options) {
     this._reset();
 
     if (options) {
         for (var action in options.actions) {
             if (options.actions.hasOwnProperty(action) && options.actions[action]) {
                 for (var i = 0; i < options.actions[action].length; i++) {
-                    var target = targets[action];
+                    var target = ZOMBULL.ActionTargets;
                     var gesture = options.actions[action][i];
                     this._gestures[target][gesture.type][gesture.gesture] = action;
                 }

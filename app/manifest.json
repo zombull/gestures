@@ -55,6 +55,7 @@
 				"js/enums.js",
 				"js/utilities.js",
 				"js/eventmanager.js",
+				"js/defaultoptions.js",
 				"js/gesture.js",
 				"js/mousegesture.js",
 				"js/rockergesture.js",

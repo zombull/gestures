@@ -40,7 +40,7 @@ ZOMBULL.Handler.prototype.reset = function (message) {
 
     this._options = message.options;
 
-    this._gestures.reset(this._options, message.targets);
+    this._gestures.reset(this._options);
     this._mouse.reset(this._options);
     this._rocker.reset(this._options);
 };

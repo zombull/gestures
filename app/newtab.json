@@ -7,6 +7,7 @@
         "app/js/enums.js",
         "app/js/utilities.js",
         "app/js/eventmanager.js",
+        "app/js/defaultoptions.js",
         "app/js/gesture.js",
         "app/js/gestures.js",
         "app/js/mousegesture.js",
