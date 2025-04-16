@@ -1,7 +1,6 @@
 'use strict';
 
 (function (ZOMBULL) {
-
     ZOMBULL.mouseGesturesDisabled = false;
 
     // Cache enums to reduce the amount of typing required.
@@ -174,5 +173,4 @@
             this.end();
         }
     };
-
-}(window.ZOMBULL = window.ZOMBULL || {}));
+}(ZOMBULL));

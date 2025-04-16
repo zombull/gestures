@@ -31,7 +31,7 @@ gestures.controller('EditController', function EditController($scope, $mdDialog,
         $scope.existingGesture = existingGesture;
     }
 
-    var capture = new window.ZOMBULL.Capture(safeApply.bind($scope, updateGesture), ZOMBULL.ActionTargets[action]);
+    var capture = new ZOMBULL.Capture(safeApply.bind($scope, updateGesture), ZOMBULL.ActionTargets[action]);
     capture.init();
 
     $scope.save = function() {

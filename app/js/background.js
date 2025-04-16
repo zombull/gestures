@@ -143,6 +143,4 @@
 
     var background = new ZOMBULL.Background();
     background.initialize();
-
-
-}(window.ZOMBULL = window.ZOMBULL || {}));
+}(ZOMBULL));

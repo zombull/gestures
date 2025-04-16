@@ -1,7 +1,6 @@
 'use strict';
 
 (function (ZOMBULL) {
-
     // Cache a few things to reduce the amount of typing required.
     var mouse = ZOMBULL.MouseButton;
     var multi = ZOMBULL.MouseMultiButtonBits;
@@ -106,5 +105,4 @@
             ZOMBULL.cancelEvent(event);
         }
     };
-
-}(window.ZOMBULL = window.ZOMBULL || {}));
+}(ZOMBULL));
