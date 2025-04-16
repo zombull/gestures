@@ -28,7 +28,7 @@ ZOMBULL.Gesture.prototype.destroy = function() {
     this.removeEventListeners();
 };
 
-ZOMBULL.Gesture.prototype.reset = function (options) {
+ZOMBULL.Gesture.prototype.init = function (options) {
     this.end();
 
     this._options = options;

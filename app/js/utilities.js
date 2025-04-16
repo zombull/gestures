@@ -61,22 +61,6 @@ ZOMBULL.forEachTabInWindow = function (windowId, callback) {
     });
 };
 
-// Invoke a method on tab(s) with a connection-less request, used for one-off things.
-// ZOMBULL.invokeMethodOnTab = function(method, allTabs) {
-//     function tabCallback(tab) {
-//         if (tab != null && typeof tab.id !== 'undefined') {
-//             chrome.tabs.sendMessage(tab.id, { method: method, tab: tab }, function() { });
-//         }
-//     }
-
-//     if (allTabs) {
-//         ZOMBULL.forEachTab(tabCallback);
-//     }
-//     else {
-//         ZOMBULL.getCurrentTab(tabCallback);
-//     }
-// };
-
 // Invoke the method specified in the message in the context of 'this' object.  The sender and
 // sendResponse parameters allow this function to be used a callback for handling messages in
 // Chrome's message passing system.  If the method exists then sendResponse will be called to
@@ -86,7 +70,7 @@ ZOMBULL.forEachTabInWindow = function (windowId, callback) {
 ZOMBULL.invokeMethod = function(message, sender, sendResponse) {
     if (typeof message.method === 'string') {
         if (message.method in Object.getPrototypeOf(this)) {
-            this[message.method](message, sendResponse);
+            this[message.method](message, sender);
 
             if (sendResponse) {
                 sendResponse();

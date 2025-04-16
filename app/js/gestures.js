@@ -2,33 +2,31 @@
 
 ZOMBULL.Gestures = function () {
     this._gestures = {};
-    this._reset();
+    this.initTargets();
 };
 
-ZOMBULL.Gestures.prototype._init = function(target) {
+ZOMBULL.Gestures.prototype.initTarget = function(target) {
     this._gestures[target] = {};
     this._gestures[target][ZOMBULL.GestureType.MOUSE] = {};
     this._gestures[target][ZOMBULL.GestureType.ROCKER] = {};
 };
 
-ZOMBULL.Gestures.prototype._reset = function() {
-    this._init(ZOMBULL.GestureTarget.GENERIC);
-    this._init(ZOMBULL.GestureTarget.LINK);
-    this._init(ZOMBULL.GestureTarget.IMAGE);
-    this._init(ZOMBULL.GestureTarget.SELECTION);
+ZOMBULL.Gestures.prototype.initTargets = function() {
+    this.initTarget(ZOMBULL.GestureTarget.GENERIC);
+    this.initTarget(ZOMBULL.GestureTarget.LINK);
+    this.initTarget(ZOMBULL.GestureTarget.IMAGE);
+    this.initTarget(ZOMBULL.GestureTarget.SELECTION);
 };
 
-ZOMBULL.Gestures.prototype.reset = function (options) {
-    this._reset();
+ZOMBULL.Gestures.prototype.init = function (options) {
+    this.initTargets();
 
-    if (options) {
-        for (var action in options.actions) {
-            if (options.actions.hasOwnProperty(action) && options.actions[action]) {
-                for (var i = 0; i < options.actions[action].length; i++) {
-                    var target = ZOMBULL.ActionTargets;
-                    var gesture = options.actions[action][i];
-                    this._gestures[target][gesture.type][gesture.gesture] = action;
-                }
+    for (var action in options.actions) {
+        if (options.actions.hasOwnProperty(action) && options.actions[action]) {
+            for (var i = 0; i < options.actions[action].length; i++) {
+                var target = ZOMBULL.ActionTargets[action];
+                var gesture = options.actions[action][i];
+                this._gestures[target][gesture.type][gesture.gesture] = action;
             }
         }
     }

@@ -1,23 +1,21 @@
 'use strict';
 
 if (true) {
-    (function(ZOMBULL) {
-
+    (function (ZOMBULL) {
         ZOMBULL.Background = function() {
-            // The current options property needs to be a deep copy of DefaultOptions.  As we're not using
-            // lodash in the core extension, stringify and reparse the options to create a copy.  This is a
-            // one-time thing, performance is more than fast enough for our purposes.
-            this._options = JSON.parse(JSON.stringify(ZOMBULL.DefaultOptions));
             this._chromeActions = new ZOMBULL.ChromeActions();
 
-            this._handlers = {};
-
-            this._linux = false;
+            this._tabIds = {};
+            this._activeTabId = chrome.tabs.TAB_ID_NONE;
         };
 
         ZOMBULL.Background.prototype.initialize = function () {
             chrome.runtime.getPlatformInfo(function(info) {
-                background._linux = (info.os == 'linux');
+                chrome.storage.session.set({ linux: info.os == 'linux' });
+            });
+
+            ZOMBULL.getCurrentTab(function(tab) {
+                background.setCurrentTab(tab.id);
             });
 
             chrome.storage.sync.get('options', function(storage) {
@@ -29,10 +27,7 @@ if (true) {
                 }
 
                 chrome.storage.onChanged.addListener(background.onChanged);
-                chrome.runtime.onConnect.addListener(background.onConnect);
-
-                // Set the current tab.
-                ZOMBULL.getCurrentTab(background.setCurrentTab);
+                chrome.runtime.onMessage.addListener(ZOMBULL.invokeMethod.bind(background));
 
                 chrome.tabs.onActivated.addListener(background.onTabActivated);
                 chrome.tabs.onRemoved.addListener(background.onTabRemoved);
@@ -48,61 +43,26 @@ if (true) {
             }
         };
 
-
         ZOMBULL.Background.prototype.setCurrentTab = function (tabId) {
-
-            if (background._currentTabId != tabId) {
-
-                var handlers = background._handlers[background._currentTabId];
-                for (var key in handlers) {
-                    if (handlers.hasOwnProperty(key)) {
-                        handlers[key].postMessage({ method: 'tabInactive' });
-                    }
+            if (background._activeTabId != tabId) {
+                if (background._activeTabId != chrome.tabs.TAB_ID_NONE &&
+                    this._tabIds.hasOwnProperty(background._activeTabId)) {
+                    chrome.tabs.sendMessage(background._activeTabId, { method: 'tabInactive' });
                 }
 
-                background._currentTabId = tabId;
+                background._activeTabId = tabId;
             }
         };
 
         ZOMBULL.Background.prototype.onInstalled = function (details) {
-
-            // Reload all tabs to inject the content scripts on all tabs when this extension installed or updated.
-            // This is obviously a big hammer, but any alternative would require a lot more code and would be more
-            // fragile.  Given that this scenario will occur very infrequently, using a big hammer is a-ok since it
-            // allows a super simple implementation.  This also handles reloading the extension via Developer Mode.
+            // Reload all tabs to inject the content scripts on all tabs when this
+            // extension is installed or updated.  This is obviously a big hammer,
+            // but any alternative would require a lot more code and would be more
+            // fragile.  Given that this scenario will occur very infrequently,
+            // using a big hammer is a-ok since it allows a simple implementation.
+            // This also handles reloading the extension via Developer Mode.
             if (details.reason == 'installed' || details.reason == 'update') {
                 background._chromeActions.reloadAllTabs();
-            }
-        };
-
-        ZOMBULL.Background.prototype.onConnect = function (port) {
-            if (port.sender != null && port.name == 'handler') {
-
-                var sender = port.sender;
-                if (sender.id == chrome.runtime.id && sender.tab != null) {
-
-                    if (background._handlers.hasOwnProperty(sender.tab.id)) {
-                        var oldPort = background._handlers[sender.tab.id][sender.frameId];
-                        if (oldPort) {
-                            oldPort.disconnect();
-                        }
-                    }
-                    else {
-                        background._handlers[sender.tab.id] = {};
-                    }
-
-                    background._handlers[sender.tab.id][sender.frameId] = port;
-
-                    port.onMessage.addListener(ZOMBULL.invokeMethod.bind(background));
-                    port.onDisconnect.addListener(function () {
-                        if (background._handlers.hasOwnProperty(sender.tab.id)) {
-                            delete background._handlers[sender.tab.id][sender.frameId];
-                        }
-                    });
-
-                    // Send a message back to reset the the handler, passing in the current options.
-                    port.postMessage({ method: 'reset', options: background._options, linux: background._linux });
-                }
             }
         };
 
@@ -111,23 +71,33 @@ if (true) {
         };
 
         ZOMBULL.Background.prototype.onFocusChanged = function (winId) {
-            ZOMBULL.getCurrentTab(background.setCurrentTab);
+            ZOMBULL.getCurrentTab(function(tab) {
+                background.setCurrentTab(tab.id);
+            });
+        };
+
+        ZOMBULL.Background.prototype.onTabAdded = function (message, sender) {
+            background._tabIds[sender.tab.id] = sender.tab.id;
+            chrome.tabs.sendMessage(sender.tab.id, { method: 'Added tab: ' + sender.tab.id });
         };
 
         ZOMBULL.Background.prototype.onTabRemoved = function (tabId, removeInfo) {
-            delete background._handlers[tabId];
+            delete background._tabIds[tabId];
+
+            if (background._activeTabId == tabId) {
+                background._activeTabId = chrome.tabs.TAB_ID_NONE;
+            }
         };
 
-        ZOMBULL.Background.prototype.processGesture = function (message) {
-
-            // Get the original message, the message we get was to processGesture, we want the actual gesture message.
+        ZOMBULL.Background.prototype.onGesture = function (message, sender) {
+            // Get the original message, the message sent to this (the service worker)
+            // is doGesture, which is a wrapper of the actual gesture message.
             message = message.message;
 
-            // Get the current tab and add it to the message.  Almost all Chrome-level actions require the current tab.
-            ZOMBULL.getCurrentTab(function (tab) {
-                message.tab = tab;
-                ZOMBULL.invokeMethod.call(background._chromeActions, message);
-            });
+            // Add the sender's tab to the message.  Almost all Chrome-level
+            // actions require the current tab.
+            message.tab = sender.tab;
+            ZOMBULL.invokeMethod.call(background._chromeActions, message);
         };
 
         var background = new ZOMBULL.Background();

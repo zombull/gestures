@@ -5,44 +5,38 @@ ZOMBULL.Handler = function () {
 
     this._options = null;
 
-    this._background = null;
-
     this._mouse = new ZOMBULL.MouseGesture(this.processGesture.bind(this));
     this._rocker = new ZOMBULL.RockerGesture(this.processGesture.bind(this));
     this._eventManager = new ZOMBULL.EventManager(this);
 
-    this._linux = false;
+    this._linux = true;
     this._blockContextMenu = false;
+
+    chrome.runtime.onMessage.addListener(ZOMBULL.invokeMethod.bind(this));
+
+    chrome.runtime.sendMessage({ method: 'onTabAdded' });
 };
 
-ZOMBULL.Handler.prototype.init = function () {
+ZOMBULL.Handler.prototype.init = function (options) {
     this._eventManager.addEventListener('contextmenu', this.onContextMenu);
 
-    this._background = chrome.runtime.connect({ name: 'handler' });
-    this._background.onMessage.addListener(ZOMBULL.invokeMethod.bind(this));
-    this._background.onDisconnect.addListener(this.disconnected.bind(this));
+    this._options = options;
+
+    this._gestures.init(options);
+    this._mouse.init(options);
+    this._rocker.init(options);
+
+    chrome.storage.session.get('linux', function(result) {
+        if (result != undefined && result.hasOwnProperty('linux')) {
+            this._linux = result.linux;
+        }
+    });
 };
 
 ZOMBULL.Handler.prototype.destroy = function () {
-    if (this._background) {
-        this._background.disconnect();
-    }
-
     this._mouse.destroy();
     this._rocker.destroy();
     this._eventManager.removeEventListeners();
-};
-
-
-ZOMBULL.Handler.prototype.reset = function (message) {
-    this._linux = message.linux;
-    this._blockContextMenu = false;
-
-    this._options = message.options;
-
-    this._gestures.reset(this._options);
-    this._mouse.reset(this._options);
-    this._rocker.reset(this._options);
 };
 
 ZOMBULL.Handler.prototype.tabInactive = function (message) {
@@ -50,13 +44,6 @@ ZOMBULL.Handler.prototype.tabInactive = function (message) {
 
     this._mouse.end();
     this._rocker.end();
-};
-
-ZOMBULL.Handler.prototype.disconnected = function () {
-    this._background = null;
-
-    this._mouse.reset(null);
-    this._rocker.reset(null);
 };
 
 ZOMBULL.Handler.prototype.onContextMenu = function (event) {

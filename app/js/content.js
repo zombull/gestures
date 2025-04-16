@@ -22,7 +22,10 @@ ZOMBULL.Content.prototype.processGesture = function (gesture, event) {
         };
 
         if (!ZOMBULL.invokeMethod.call(this._tabActions, message)) {
-            this._background.postMessage({ method: 'processGesture', message: message });
+            // Note, the RPC name needs to be different than processGesture so that
+            // other tabs don't try to process this tab's gesture, i.e. so that only
+            // the service worker processes the gesture.
+            chrome.runtime.sendMessage({ method: 'onGesture', message: message });
         }
 
         // Clear the selected stuff in the window (if anything was selected).
@@ -42,4 +45,17 @@ ZOMBULL.Content.prototype.processGesture = function (gesture, event) {
     return false;
 };
 
-(new ZOMBULL.Content()).init();
+chrome.storage.sync.get('options', function(storage) {
+    var options = {};
+
+    if (storage.options) {
+        options = storage.options;
+    } else {
+        // The current options property needs to be a deep copy of DefaultOptions.  As we're not using
+        // lodash in the core extension, stringify and reparse the options to create a copy.  This is a
+        // one-time thing, performance is more than fast enough for our purposes.
+        options = JSON.parse(JSON.stringify(ZOMBULL.DefaultOptions));
+    }
+
+    (new ZOMBULL.Content()).init(options);
+});
