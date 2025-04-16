@@ -307,7 +307,7 @@ ZOMBULL.ChromeActions.prototype.openClearBrowsingData = function (message) {
 };
 
 ZOMBULL.ChromeActions.prototype.openOptions  = function (message) {
-    this.newTab(message, chrome.extension.getURL('options.html'));
+    this.newTab(message, chrome.runtime.getURL('options.html'));
 };
 
 ZOMBULL.ChromeActions.prototype.searchSelectionInNewTab = function (message) {
