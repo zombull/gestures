@@ -1,11 +1,11 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 
 	"name": "__MSG_name__",
 	"description": "__MSG_description__",
 	"version": "1.19",
 
-	"minimum_chrome_version": "45.0",
+	"minimum_chrome_version": "88.0",
 
 	"default_locale": "en",
 
@@ -17,8 +17,7 @@
 		"tabs",
 		"clipboardWrite",
 
-		"topSites",
-		"chrome://favicon/"
+		"topSites"
 	],
 
 	"icons": {
@@ -29,7 +28,7 @@
 	},
 
 	"background": {
-		"page": "background.html"
+		"service_worker": "js/background.js"
 	},
 
 	"options_ui": {
@@ -42,12 +41,14 @@
 		"newtab": "newtab.html"
 	},
 
-	"web_accessible_resources": [
-		"img/*.png",
-		"newtab.html"
-	],
+	"web_accessible_resources": [{
+		"resources": [ "img/*.png", "newtab.html" ],
+		"matches": ["<all_urls>"]
+	}],
 
-	"content_security_policy": "script-src 'self'; object-src 'self'",
+	"content_security_policy": {
+		"extension_pages": "script-src 'self'; object-src 'self'"
+	},
 
 	"content_scripts": [
 		{

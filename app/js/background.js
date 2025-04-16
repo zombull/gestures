@@ -1,6 +1,11 @@
 'use strict';
 
-if (true) {
+if (typeof importScripts === 'function') {
+    importScripts("enums.js");
+    importScripts("utilities.js");
+    importScripts("defaultoptions.js");
+    importScripts("chromeactions.js");
+
     (function (ZOMBULL) {
         ZOMBULL.Background = function() {
             this._chromeActions = new ZOMBULL.ChromeActions();

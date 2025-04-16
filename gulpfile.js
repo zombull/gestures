@@ -31,7 +31,8 @@ gulp.task('clean', function() {
 
 gulp.task('manifest', function() {
 	return gulp.src('app/manifest.json')
-		.pipe(replace(/"js": \[.*\]/, '"js": [ "js/content.min.js" ]'))
+		.pipe(replace(/"js": \[[.\s\S]*?\]/, '"js": [ "js/content.min.js" ]'))
+		.pipe(replace(/js\/background.js/, 'js\/background.min.js'))
 		.pipe(gulp.dest('build'));
 });
 
@@ -50,18 +51,13 @@ gulp.task('content', function() {
 
 
 gulp.task('background', function () {
-    var js = gulp.src(background.js)
+    return gulp.src(background.js)
         .pipe(concat('background.js'))
+        .pipe(replace(/    importScripts\(\".+\.js\"\);\n/g, ''))
         .pipe(gulp.dest('build/js'))
         .pipe(rename('background.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('build/js'));
-
-    return gulp.src('app/background.html')
-        .pipe(gulp.dest('build'))
-        .pipe(inject(js, {relative: true}))
-        .pipe(cleanhtml())
-        .pipe(gulp.dest('build'));
 });
 
 gulp.task('bookmarks', function () {
@@ -190,7 +186,7 @@ gulp.task('jshint', function() {
 	var jsHintOptions = {
 		browser: true,
 		eqnull: true,
-		globals: { chrome: false, console: true, ZOMBULL: true },
+		globals: { chrome: false, console: true, ZOMBULL: true, importScripts: true },
 		globalstrict: true,
 		"-W041": false
 	};
@@ -220,13 +216,6 @@ gulp.task('default', ['clean', 'jshint'], function() {
     gulp.start('zip');
 });
 
-
-gulp.task('background-debug', function() {
-    return gulp.src('app/background.html')
-    	.pipe(inject(gulp.src(background.js, {read: false}), {relative: true}))
-        .pipe(gulp.dest('app'));
-});
-
 gulp.task('bookmarks-debug', function() {
     return gulp.src('app/bookmarks.html')
         .pipe(inject(gulp.src(bookmarks.css.concat(bookmarks.js), {read: false}), {relative: true}))
@@ -245,6 +234,6 @@ gulp.task('options-debug', function() {
         .pipe(gulp.dest('app'));
 });
 
-gulp.task('debug', ['background-debug', 'bookmarks-debug', 'newtab-debug', 'options-debug'], function() {
+gulp.task('debug', [ 'bookmarks-debug', 'newtab-debug', 'options-debug'], function() {
 
 });
