@@ -81,10 +81,8 @@
         // This is obviously a big hammer, but any alternative would require a lot more code and would be more
         // fragile.  Given that this scenario will occur very infrequently, using a big hammer is a-ok since it
         // allows a super simple implementation.  This also handles reloading the extension via Developer Mode.
-        if (background._options.reloadAllTabsOnUpdate) {
-            if (details.reason == 'installed' || details.reason == 'update') {
-                background._chromeActions.reloadAllTabs();
-            }
+        if (details.reason == 'installed' || details.reason == 'update') {
+            background._chromeActions.reloadAllTabs();
         }
     };
 

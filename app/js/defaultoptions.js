@@ -16,7 +16,7 @@
         doNotClosePinnedTabs: true,
         focusChromeOnCloseWindow: true,
 
-        reloadAllTabsOnUpdate: true,
+        enableDebugLogging: false,
         allowIncognitoAddToReadingList: false,
 
         rockerContextMenu: true,

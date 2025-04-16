@@ -33,7 +33,7 @@
     "doNotClosePinnedTabs": { "message": "Do Not Close Pinned Tabs" },
     "focusChromeOnCloseWindow": { "message": "Focus Chrome On Close Window" },
     "rockerContextMenu": { "message": "Rocker Context Menu (Linux Only)" },
-    "reloadAllTabsOnUpdate": { "message": "Reload All Tabs On Update" },
+    "enableDebugLogging": { "message": "Enable Debug Logging" },
     "allowIncognitoAddToReadingList": { "message": "Allow Incognito Add To Reading List" },
     "showAdvancedOptions": { "message": "Show Advanced Options"},
     "newTabUrl": { "message": "New Tab Url" },
@@ -117,7 +117,7 @@
     "allowIncognitoAddToReadingListHelp": { "message": "Allow Incognito tabs to be added to the reading list.  Disabling this prevents accidentally adding an Incognito tab URL to your reading list." },
     "showAdvancedOptionsHelp": { "message": "Show the advanced options, which allow you change the mouse gestures button and specify a key to explicitly disable gesture capturing."},
 
-    "reloadAllTabsOnUpdateHelp": { "message": "Reload all tabs when Gestures is updated (happens very infrequently).  **WARNING** Disabling this may cause gestures to stop working on tabs until each tab is reloaded." },
+    "enableDebugLoggingHelp": { "message": "Enabling debug logging (of which there is currently none)" },
     "stopHelp": { "message": "Stop loading the current tab." },
     "backHelp": { "message": "Go to the previous page in the history for the current tab." },
     "forwardHelp": { "message": "Go to the next page in the history for the current tab." },
