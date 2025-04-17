@@ -32,7 +32,7 @@ ZOMBULL.DefaultOptions = {
 
         // Tab Actions
         gotoNewTabPage: initGesture('U'),
-        newTab: initGesture('D'),
+        newTab: initGesture('D').concat(initGesture('LR', ZOMBULL.GestureType.ROCKER)),
         newBackgroundTab: [],
         searchSelectionInNewTab: initGesture('caLR', ZOMBULL.GestureType.ROCKER),
         searchSelectionInNewBackgroundTab: initGesture('caRL', ZOMBULL.GestureType.ROCKER),
@@ -55,11 +55,11 @@ ZOMBULL.DefaultOptions = {
         moveTabLeft: [],
         moveTabRight: [],
         toggleTabPinned: [],
-        pinTab: [],
+        pinTab: initGesture('RL', ZOMBULL.GestureType.ROCKER),
         unpinTab: [],
-        stashTab: initGesture('LR', ZOMBULL.GestureType.ROCKER),
+        stashTab: [],
 
-        toggleTabMuted: initGesture('RL', ZOMBULL.GestureType.ROCKER),
+        toggleTabMuted: [],
         muteTab: initGesture('aD'),
         unmuteTab: initGesture('aU'),
         muteAllTabs: initGesture('aUL'),
