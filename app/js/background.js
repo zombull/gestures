@@ -77,7 +77,11 @@ if (typeof importScripts === 'function') {
 
         ZOMBULL.Background.prototype.onFocusChanged = function (winId) {
             ZOMBULL.getCurrentTab(function(tab) {
-                background.setCurrentTab(tab.id);
+                if (tab == undefined) {
+                    background.setCurrentTab(chrome.tabs.TAB_ID_NONE);
+                } else {
+                    background.setCurrentTab(tab.id);
+                }
             });
         };
 
