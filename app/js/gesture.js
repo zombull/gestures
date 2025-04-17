@@ -35,11 +35,19 @@ ZOMBULL.Gesture.prototype.init = function (options) {
 };
 
 ZOMBULL.Gesture.prototype.disableGesture = function(event) {
-    return ((this._options.disableKey !== ZOMBULL.DisableKey.NONE) &&
-            ((event.altKey && this._options.disableKey === ZOMBULL.DisableKey.ALT) ||
-            (event.ctrlKey && this._options.disableKey === ZOMBULL.DisableKey.CTRL) ||
-            (event.metaKey && this._options.disableKey === ZOMBULL.DisableKey.META) ||
-            (event.shiftKey && this._options.disableKey === ZOMBULL.DisableKey.SHIFT)));
+    switch (this._options.disableKey) {
+    case ZOMBULL.DisableKey.ALT:
+        return event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey;
+    case ZOMBULL.DisableKey.CTRL:
+        return !event.altKey && event.ctrlKey && !event.metaKey && !event.shiftKey;
+    case ZOMBULL.DisableKey.META:
+        return !event.altKey && !event.ctrlKey && event.metaKey && !event.shiftKey;
+    case ZOMBULL.DisableKey.SHIFT:
+        return !event.altKey && !event.ctrlKey && !event.metaKey && event.shiftKey;
+    case ZOMBULL.DisableKey.NONE:
+    default:
+        return false;
+    }
 };
 
 ZOMBULL.Gesture.prototype.onMouseDown = function (event) {
