@@ -7,7 +7,7 @@ function initGesture(gesture, type) {
 ZOMBULL.DefaultOptions = {
     name: 'Default',
     button: ZOMBULL.MouseButton.RIGHT,
-    disableKey: ZOMBULL.DisableKey.NONE,
+    disableKey: ZOMBULL.DisableKey.SHIFT,
 
     newTabRight: false,
     newTabFromUrlRight: true,
@@ -18,7 +18,7 @@ ZOMBULL.DefaultOptions = {
     enableDebugLogging: false,
     allowIncognitoAddToReadingList: false,
 
-    rockerContextMenu: true,
+    rockerContextMenu: false,
     showAdvancedOptions: false,
 
     newTabUrl: 'chrome://newtab',
