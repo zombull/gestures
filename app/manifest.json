@@ -12,6 +12,7 @@
 	"permissions": [
 		"bookmarks",
 		"contextMenus",
+		"favicon",
 		"storage",
 		"tabs",
 		"clipboardWrite",
