@@ -1,6 +1,6 @@
 {
     "name": { "message": "Gestures" },
-    "description": { "message": "Mouse gestures.  Accessible for casual users, versatile for power users." },
+    "description": { "message": "Mouse gestures." },
 
     "default": { "message": "Default" },
     "cancel": { "message": "Cancel" },
